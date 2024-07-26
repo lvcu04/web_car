@@ -34,7 +34,7 @@
             <br><br> Với triết lý “Đặt khách hàng làm trọng tâm”, VinFast không ngừng sáng tạo để tạo ra các sản phẩm đẳng cấp và trải nghiệm xuất sắc cho mọi người.</p>
         </div>
         <div class="background_car">
-            <img src="../img/VF9NeptuneGray.webp" alt="VF9" width="758px">
+            <img src="../img/VF9NeptuneGray.jpg" alt="VF9" width="758px">
         </div>
     </div>
     <?php include('footer.php'); ?>

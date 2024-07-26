@@ -98,7 +98,7 @@ session_start();
                 <div class="slider">
                     <div class="slides">
                         <div class="slide">
-                            <img src="../img/vf-3_ 1715231397.webp" alt="VF 3" class="centered-image" >
+                            <img src="../img/vf-3.jpg" alt="VF 3" class="centered-image" >
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -124,7 +124,7 @@ session_start();
                             
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-5.webp" alt="VF 5">
+                            <img src="../img/vf-5.jpg" alt="VF 5">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -149,7 +149,7 @@ session_start();
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-6.webp" alt="VF 6">
+                            <img src="../img/vf-6.jpg" alt="VF 6">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -174,7 +174,7 @@ session_start();
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-e34.webp" alt="VF e34">
+                            <img src="../img/vf-e34.jpg" alt="VF e34">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -199,7 +199,7 @@ session_start();
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-7.webp" alt="VF 7">
+                            <img src="../img/vf-7.jpg" alt="VF 7">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -224,7 +224,7 @@ session_start();
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-8.webp" alt="VF 8">
+                            <img src="../img/vf-8.jpg" alt="VF 8">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
@@ -249,7 +249,7 @@ session_start();
                             </div>
                         </div>
                         <div class="slide">
-                            <img src="../img/vf-9.webp" alt="VF 9">
+                            <img src="../img/vf-9.jpg" alt="VF 9">
                             <div class="infor-car">
                                 <div class="line-car" >
                                     <span class="title">Dòng xe: </span>
