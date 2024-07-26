@@ -70,6 +70,7 @@ nav ul li a:hover {
     margin-right: 24px;
     align-items: center;
     font-size: 14px;
+    position: relative;
     transition: color 0.3s ease;
 }
 .box-car-head i {
@@ -290,7 +291,7 @@ nav ul li a:hover {
     margin: 12px 24px 48px;
 }
 
-.logo img {
+#nav .logo img {
     width: 150px;
     padding-bottom: 30px;
 }
@@ -389,3 +390,82 @@ nav ul li a:hover {
 }
 
 .contact svg{ margin: 5px;}
+
+.content{
+    display: flex;
+    min-height: 345.333px;
+    height: 500px;
+    width: 100%;
+    padding: 120px 0px 20px 80px;
+    background-color: #fff;
+}
+.content img{
+    padding-right: 50px;
+}
+ .title_introduction{
+    display:block;
+}
+
+.content .title_introduction span{
+    font-weight: 300;
+    line-height: 70px;
+    color: #3C3C3C;
+    font-family: 'Roboto', sans-serif;
+}
+.content .title_introduction h1{
+    
+    color: #3C3C3C;
+    font-family: 'Roboto', sans-serif;
+}
+.content .title_introduction p{
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    color: #3C3C3C;
+}
+.menu-account {
+    position: absolute;
+    list-style: none;
+    top: 100%;
+    right: 20%;
+    width: 250px;
+    background-color: rgb(248, 246, 246);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 10; /* Đảm bảo menu xuất hiện trên cùng */
+}
+.menu-account::before{
+    
+    content: "";
+    border-width:12px 57px;
+    border-style:  solid;
+    border-color:  rgb(248, 246, 246) ;
+    position: absolute;
+    right: 3px;
+    top: -20px;
+    
+}
+.box-car-head:hover .menu-account {
+    display: block;
+}
+
+.menu-account .menu-account-item {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px;
+    margin: 5px 0; /* Chỉnh sửa khoảng cách giữa các mục */
+}
+
+.menu-account .menu-account-item a {
+    text-decoration: none;
+    color: #3C3C3C;
+    font-size: 15px;
+}
+
+.menu-account .menu-account-item:hover{
+    background-color: #c1d0ed;
+}
+.menu-account .menu-account-item:hover a{
+    color: #1464f4;
+}
