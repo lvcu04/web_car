@@ -15,3 +15,4 @@ session_destroy();
 // Chuyển hướng về trang đăng nhập
 header("Location: home.php");
 exit();
+?>

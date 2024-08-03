@@ -150,43 +150,34 @@ SET time_zone = "+00:00";
 -- DELIMITER ;
 
 -- DELIMITER $$
-
-CREATE TRIGGER `trg_transactions_update_soluong` 
-AFTER UPDATE ON `transactions` 
-FOR EACH ROW 
-BEGIN
-    DECLARE v_remain_number INT;
-
-    -- Kiểm tra nếu số lượng bán đã thay đổi
-    IF OLD.transaction_number <> NEW.transaction_number THEN
-
-        -- Kiểm tra nếu số lượng bán mới không hợp lệ
-        IF NEW.transaction_number < 0 THEN
-            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Số lượng xe bán không thể nhỏ hơn 0.';
-        ELSE
-            -- Lấy số lượng sản phẩm hiện tại từ bảng `product`
-            SELECT product_number INTO v_remain_number 
-            FROM product 
-            WHERE product_id = NEW.product_id;
-
-            -- Cập nhật số lượng sản phẩm
-            UPDATE product 
-            SET product_number = product_number - (NEW.transaction_number - OLD.transaction_number) 
-            WHERE product_id = NEW.product_id;
-
-            -- Kiểm tra số lượng sản phẩm sau khi cập nhật
-            IF (SELECT product_number FROM product WHERE product_id = NEW.product_id) < 0 THEN
-                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Số lượng xe không thể nhỏ hơn 0.';
-            END IF;
-        END IF;
-    END IF;
-END$$
-
-DELIMITER ;
+-- CREATE Trigger trg_transactions_update_soluong
+-- afTER UPDATE on transactions
+-- for EACH ROW
+-- BEGIN
+--   if OLD.transaction_number <> NEW.transaction_number then
+--     if NEW.transaction_number < 0 then SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'so ....';
+--     else UPDATE product
+--     set product_number = product_number -(NEW.transaction_number - OLD.transaction_number)
+--     where product_id = NEW.product_id;
 
 
-COMMIT;
+--       if(SELECT product_number from product where product_id = NEW.product_id) < 0 then
+--         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Số lượng xe không thể nhỏ hơn 0.';
+--         end IF;
+--     END if;
+--   END IF;
+
+-- END
+-- $$
+-- DELIMITER ;
+
+-- COMMIT;
+
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
