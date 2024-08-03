@@ -14,6 +14,7 @@ $data=mysqli_connect($host,$user,$password,$db);
 
 if($data == false){
     die("connect error");
+    
 }
     if($_SERVER["REQUEST_METHOD"] == "POST")  
     {
@@ -32,6 +33,11 @@ if($data == false){
             $_SESSION['email'] = $email;
             $_SESSION['usertype'] = 'user';
             header("location:home.php");
+        }
+        else if($row["usertype"] == 'admin'){
+            $_SESSION['email'] = $email;
+            $_SESSION['usertype'] = 'admin';
+            header("Location: /admin/ad_home.php");
         }
         else
         {

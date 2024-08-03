@@ -13,7 +13,7 @@
     <?php include('home_css.php') ?>
 </head>
 <body>
-    
+    <?php include('header.php') ?>
     <div class="login-container">
         <h2>Đăng nhập</h2>
         <h4>
