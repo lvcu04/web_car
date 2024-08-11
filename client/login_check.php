@@ -14,6 +14,7 @@ $data=mysqli_connect($host,$user,$password,$db);
 
 if($data == false){
     die("connect error");
+    
 }
     if($_SERVER["REQUEST_METHOD"] == "POST")  
     {
