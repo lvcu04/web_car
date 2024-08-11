@@ -117,7 +117,7 @@ session_start();
                                     <span class="title-desc">240.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ session_start();
                                     <span class="title-desc">468.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -168,7 +168,7 @@ session_start();
                                     <span class="title-desc">675.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@ session_start();
                                     <span class="title-desc">710.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@ session_start();
                                     <span class="title-desc">850.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -243,7 +243,7 @@ session_start();
                                     <span class="title-desc">1.106.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -268,7 +268,7 @@ session_start();
                                     <span class="title-desc">1.513.000.000 VNĐ</span>
                                 </div>
                                 <div class="field-buttons">
-                                    <button class="deposit"><a href="#">Đặt cọc</a></button>
+                                    <button class="deposit"><a href="#myModal" data-toggle="modal">Đặt cọc</a></button>
                                     <button class="details"><a href="#">Xem chi tiết</a></button>
                                 </div>
                             </div>
@@ -280,9 +280,96 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+    </div>
+   <!-- Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
-        <?php include('../php/footer.php') ?>
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Đặt cọc </h4>
+                </div>
+
+                <!-- Modal body -->
+                <header class="modal-heading">
+                    <i class="modal-icon fas fa-pen"></i>
+                    Nhập thông tin khách hàng
+                </header>
+                <div class="modal-body">
+                    <div class="modal-container">
+                        <label for="" class="modal-info">
+                            Thông tin chủ xe
+                        </label>
+                        <div class="modal-body">
+                            <form action="#" method="POST">
+                                <div>
+                                    <label>
+                                        Họ và tên
+                                    </label>
+                                    <input type="text" name="name">
+                                </div>
+
+                                <div>
+                                    <label f>
+                                        Số điện thoại
+                                    </label>
+                                    <input type="text" name="phone">
+                                </div>
+                                <div>
+                                    <label>
+                                        Số CMT/CCCD
+                                    </label>
+                                    <input type="text" name="identity">
+                                </div>
+                                <div>
+                                    <label>
+                                        Email
+                                    </label>
+                                    <input type="email" name="email">
+                                </div>
+
+                            </form>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <footer class="modal-info">
+                                    Showroom
+                                </footer>
+
+                                <div class="modal-grid">
+                                    <div>
+                                        <label>
+                                            Tỉnh thành
+                                        </label>
+                                        <input type="text" name="province">
+                                    </div>
+
+                                    <div>
+                                        <label for="" class="modal-label">
+                                            Showroom nhận xe
+                                        </label>
+                                        <input type="text" name="location">
+                                    </div>
+                                </div>
+
+                                <button id="send-msg">Gửi thông tin</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <?php include('../client/footer.php') ?>
 </body>
-<script src="../js/slick.js"></script>
+<script src="../js/slick.js">
+    $("#myModal").modal()
+</script>
 </html>

@@ -17,6 +17,10 @@ body {
     max-height: 400px;
 }
 
+.login-container i {
+    font-size: 100px;
+    margin-bottom: 15px;
+}
 .login-container h2 {
     margin-bottom: 20px;
 }

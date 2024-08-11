@@ -13,8 +13,9 @@
     <?php include('home_css.php') ?>
 </head>
 <body>
-    
+   
     <div class="login-container">
+        <i class="fas fa-user-circle" ></i>
         <h2>Đăng nhập</h2>
         <h4>
             <?php 

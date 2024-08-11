@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 
 $host = "localhost";
 $user = "root";
@@ -8,25 +8,27 @@ $db = "carshop";
 
 $data = new mysqli($host, $user, $password, $db);
 
-if ($data->connect_error) {
-    die("Connection failed: " . $data->connect_error);
-}
-
-$email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
-$email = $data->real_escape_string($email);
-
-$sql = $data->prepare("SELECT name FROM users WHERE email = ?");
-$sql->bind_param("s", $email);
-$sql->execute();
-$result = $sql->get_result();
-
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    $username = htmlspecialchars($row['name']);
+if (isset($_SESSION['email'])) {
+    $email = $data->real_escape_string($_SESSION['email']);
+    
+    $sql = $data->prepare("SELECT name FROM users WHERE email = ?");
+    $sql->bind_param("s", $email);
+    $sql->execute();
+    $result = $sql->get_result();
+    
+    $name = '';
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $name = $row['name'];
+    }
 } else {
-    $username = "Tài khoản";
+    // Chuyển hướng người dùng đến trang đăng nhập nếu chưa đăng nhập
+    header("Location: login.php");
+    exit();
 }
 ?>
+
+
 
 
 
@@ -53,18 +55,11 @@ if ($result->num_rows > 0) {
                 </ul>
             </nav>
             <div class="box-car-head">
-                
-            <?php if ($username != "Tài khoản") { ?>
-            <span class="account"><i class="fas fa-user"></i><?php echo htmlspecialchars($username); ?></span>
-            <ul class="menu-account">
-                <li class="menu-account-item"><a href="#">Thông tin cá nhân</a></li>
-                <li class="menu-account-item"><a href="logout.php">Đăng xuất</a></li>
-            </ul>
-        <?php } else { ?>
-            <a class="account" href="login.php"><i class="fas fa-user"></i><?php echo htmlspecialchars($username); ?></a>
-        <?php } ?>
-
-                
+                <span class="account"><i class="fas fa-user"></i><?php echo htmlspecialchars($name); ?></span>
+                <ul class="menu-account">
+                    <li class="menu-account-item"><a href="#">Thông tin cá nhân</a></li>
+                    <li class="menu-account-item"><a href="logout.php">Đăng xuất</a></li>
+                </ul>
                 <div class="register-drive"><button><a href="#">Đăng ký lái thử</a></button></div>
                 <div class="main-menu"><i class="fa fa-bars" aria-hidden="true"></i></div>
             </div>

@@ -33,6 +33,11 @@ if($data == false){
             $_SESSION['usertype'] = 'user';
             header("location:home.php");
         }
+        else if($row["usertype"] == 'admin'){
+            $_SESSION['email'] = $email;
+            $_SESSION['usertype'] = 'admin';
+            header("Location: /admin/ad_home.php");
+        }
         else
         {
             $_SESSION['loginMessage'] = "Email và Password không tồn tại!";
