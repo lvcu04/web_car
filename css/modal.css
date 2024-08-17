@@ -12,7 +12,7 @@
 }
 
 .modal-dialog {
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 20px;
     width: 80%;
     max-width: 500px;
@@ -37,6 +37,11 @@
 .modal-header h4 {
     margin: 0;
 }
+.modal-header button{
+    width: 30px;
+    height: 30px;
+    border: none;
+}
 
 /* Modal heading */
 .modal-heading {
@@ -56,32 +61,44 @@
 .modal-body {
     padding: 10px 0;
 }
-
-.modal-container {
-    margin-bottom: 15px;
+.modal-body form{
+    width: 440px;
+    padding-left: 10px;
 }
 
-.modal-container label.modal-info {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 10px;
-}
 
-.modal-body label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
 
 .modal-body input[type="text"],
 .modal-body input[type="email"] {
-    width: 100%;
+    width: 90%;
+    height: 30px;
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+.modal-body .form-group i{
+    color: #999;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+.modal-body .form-group svg{
+    color: #999;
+    padding: 5px;
+    margin-top: 5px;
+}
+.modal-body select{
+    width: 100%;
+    height: 40px;
+}
+select.form-control option[value=""] {
+    color: #999; 
+}
 
+select.form-control:valid option[value=""] {
+    display: none;
+}
 
 /* Modal footer */
 .modal-footer {
@@ -157,3 +174,52 @@
 .modal-footer .btn:hover {
     background-color: #c82333;
 }
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+    display: flex;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .icon-container {
+    position: absolute;
+    left: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+  }
+  
+  .form-control:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .form-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  .text-danger {
+    color: #dc3545;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

@@ -17,20 +17,6 @@ if(isset($_GET['transaction_id'])){
     //bat dau transaction 
     mysqli_begin_transaction($data);
     
-    // //xóa bảng location
-    // $stmt_locations = mysqli_prepare($data, "DELETE FROM locations WHERE location_id = ?");
-    // mysqli_stmt_bind_param($stmt_locations, 'i', $code);
-    // $result_locations = mysqli_stmt_execute($stmt_locations);
-    // //xóa bảng users
-    // $stmt_users = mysqli_prepare($data,"DELETE FROM users WHERE id = ? ");
-    // mysqli_stmt_bind_param($stmt_users,'i',$code);
-    // $result_users = mysqli_stmt_execute($stmt_users);
-
-    // //xóa bảng product
-    // $stmt_product = mysqli_prepare($data,"DELETE FROM product where product_id = ?");
-    // mysqli_stmt_bind_param($stmt_product , 'i' , $code);
-    // $result_product = mysqli_stmt_execute($stmt_product);
-    
     //xóa bảng transactions
     $stmt_transactions = mysqli_prepare($data,"DELETE FROM transactions where transaction_id = ?");
     mysqli_stmt_bind_param($stmt_transactions , 'i' , $code);

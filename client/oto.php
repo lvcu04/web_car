@@ -1,6 +1,27 @@
 <?php 
-session_start();
 
+$host = "localhost";
+$user = "root";
+$password = "";
+$db = "carshop";
+
+$data = mysqli_connect($host, $user, $password, $db);
+
+if (!$data) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+$sql_places = "SELECT DISTINCT pob FROM users";
+$result_places = mysqli_query($data, $sql_places);
+
+if (!$result_places) {
+    die("Query failed: " . mysqli_error($data));
+}
+
+$places = [];
+while ($row = mysqli_fetch_assoc($result_places)) {
+    $places[] = $row['pob'];
+}
+mysqli_close($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,10 +31,11 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include('home_css.php'); ?>
+    
 </head>
 
 <body>
-    <?php include('header.php') ?>
+    <?php include('header.php'); ?>
     <div class="container">
         <div class="vehicle-car">
             <div class="brand">
@@ -325,346 +347,109 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <div class="slide">
-                        <img src="../img/vf-6.jpg" alt="VF 6">
-                        <div class="infor-car">
-                            <div class="line-car">
-                                <span class="title">Dòng xe: </span>
-                                <span class="title-desc">B-SUV</span>
-                            </div>
-                            <div class="seating-car">
-                                <span class="title">Số chỗ ngồi: </span>
-                                <span class="title-desc">5 chỗ</span>
-                            </div>
-                            <div class="distance">
-                                <span class="title">Quảng đường lên tới: </span>
-                                <span class="title-desc">381km (WLTP)</span>
-                            </div>
-                            <div class="price-car">
-                                <span class="title">Giá từ: </span>
-                                <span class="title-desc">675.000.000 VNĐ</span>
-                            </div>
-                            <div class="field-buttons">
-                                <button class="deposit" data-toggle="modal" data-target="#myModal"><a href="#">Đặt
-                                        cọc</a></button>
-                                <button class="details"><a href="#">Xem chi tiết</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="../img/vf-e34.jpg" alt="VF e34">
-                        <div class="infor-car">
-                            <div class="line-car">
-                                <span class="title">Dòng xe: </span>
-                                <span class="title-desc">C-SUV</span>
-                            </div>
-                            <div class="seating-car">
-                                <span class="title">Số chỗ ngồi: </span>
-                                <span class="title-desc">5 chỗ</span>
-                            </div>
-                            <div class="distance">
-                                <span class="title">Quảng đường lên tới: </span>
-                                <span class="title-desc">318,6km (NEDC)</span>
-                            </div>
-                            <div class="price-car">
-                                <span class="title">Giá từ: </span>
-                                <span class="title-desc">710.000.000 VNĐ</span>
-                            </div>
-                            <div class="field-buttons">
-                                <button class="deposit" data-toggle="modal" data-target="#myModal"><a href="#">Đặt
-                                        cọc</a></button>
-                                <button class="details"><a href="#">Xem chi tiết</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="../img/vf-7.jpg" alt="VF 7">
-                        <div class="infor-car">
-                            <div class="line-car">
-                                <span class="title">Dòng xe: </span>
-                                <span class="title-desc">C-SUV</span>
-                            </div>
-                            <div class="seating-car">
-                                <span class="title">Số chỗ ngồi: </span>
-                                <span class="title-desc">5 chỗ</span>
-                            </div>
-                            <div class="distance">
-                                <span class="title">Quảng đường lên tới: </span>
-                                <span class="title-desc">431km </span>
-                            </div>
-                            <div class="price-car">
-                                <span class="title">Giá từ: </span>
-                                <span class="title-desc">850.000.000 VNĐ</span>
-                            </div>
-                            <div class="field-buttons">
-                                <button class="deposit" data-toggle="modal" data-target="#myModal"><a href="#">Đặt
-                                        cọc</a></button>
-                                <button class="details"><a href="#">Xem chi tiết</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="../img/vf-8.jpg" alt="VF 8">
-                        <div class="infor-car">
-                            <div class="line-car">
-                                <span class="title">Dòng xe: </span>
-                                <span class="title-desc">D-SUV</span>
-                            </div>
-                            <div class="seating-car">
-                                <span class="title">Số chỗ ngồi: </span>
-                                <span class="title-desc">5 chỗ</span>
-                            </div>
-                            <div class="distance">
-                                <span class="title">Quảng đường lên tới: </span>
-                                <span class="title-desc">471km </span>
-                            </div>
-                            <div class="price-car">
-                                <span class="title">Giá từ: </span>
-                                <span class="title-desc">1.106.000.000 VNĐ</span>
-                            </div>
-                            <div class="field-buttons">
-                                <button class="deposit" data-toggle="modal" data-target="#myModal"><a href="#">Đặt
-                                        cọc</a></button>
-                                <button class="details"><a href="#">Xem chi tiết</a></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <img src="../img/vf-9.jpg" alt="VF 9">
-                        <div class="infor-car">
-                            <div class="line-car">
-                                <span class="title">Dòng xe: </span>
-                                <span class="title-desc">E-SUV</span>
-                            </div>
-                            <div class="seating-car">
-                                <span class="title">Số chỗ ngồi: </span>
-                                <span class="title-desc">6-7 chỗ</span>
-                            </div>
-                            <div class="distance">
-                                <span class="title">Quảng đường lên tới: </span>
-                                <span class="title-desc">626km </span>
-                            </div>
-                            <div class="price-car">
-                                <span class="title">Giá từ: </span>
-                                <span class="title-desc">1.513.000.000 VNĐ</span>
-                            </div>
-                            <div class="field-buttons">
-                                <button class="deposit" data-toggle="modal" data-target="#myModal"><a href="#">Đặt
-                                        cọc</a></button>
-                                <button class="details"><a href="#">Xem chi tiết</a></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                   
                 <div class="nav container-nav">
                     <button class="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                     <button class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                 </div>
             </div>
-<<<<<<< HEAD
+
     </div>
-   <!-- Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Đặt cọc </h4>
-                </div>
-
-                <!-- Modal body -->
-                <header class="modal-heading">
-                    <i class="modal-icon fas fa-pen"></i>
-                    Nhập thông tin khách hàng
-                </header>
-                <div class="modal-body">
-                    <div class="modal-container">
-                        <label for="" class="modal-info">
-                            Thông tin chủ xe
-                        </label>
-                        <div class="modal-body">
-                            <form action="#" method="POST">
-                                <div>
-                                    <label>
-                                        Họ và tên
-                                    </label>
-                                    <input type="text" name="name">
-                                </div>
-
-                                <div>
-                                    <label f>
-                                        Số điện thoại
-                                    </label>
-                                    <input type="text" name="phone">
-                                </div>
-                                <div>
-                                    <label>
-                                        Số CMT/CCCD
-                                    </label>
-                                    <input type="text" name="identity">
-                                </div>
-                                <div>
-                                    <label>
-                                        Email
-                                    </label>
-                                    <input type="email" name="email">
-                                </div>
-
-                            </form>
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <footer class="modal-info">
-                                    Showroom
-                                </footer>
-
-                                <div class="modal-grid">
-                                    <div>
-                                        <label>
-                                            Tỉnh thành
-                                        </label>
-                                        <input type="text" name="province">
-                                    </div>
-
-                                    <div>
-                                        <label for="" class="modal-label">
-                                            Showroom nhận xe
-                                        </label>
-                                        <input type="text" name="location">
-                                    </div>
-                                </div>
-
-                                <button id="send-msg">Gửi thông tin</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                </div>
-
-            </div>
+     <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <i class="modal-icon fas fa-pen"></i>
+          <h4 class="modal-title">Thông tin chủ xe</h4>
+          <button type="button" class="close" data-dismiss="modal">X</button>
         </div>
-    </div>
-        <?php include('../client/footer.php') ?>
-</body>
-<script src="../js/slick.js">
-    $("#myModal").modal()
-</script>
-=======
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="../client/process_cart.php" method="POST">
+                <div class="form-group">
+                    
+                    <i class="fa fa-user"></i>
+                    
+                    <input type="text" class="form-control" placeholder="Họ và tên" name="name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa fa-phone"></i>
+                    <input type="text" class="form-control" placeholder="Số điện thoại" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa fa-id-card"></i>
+                    <input type="text" class="form-control" placeholder="Số CMT/CCCD" name="identity" required>
+            
+                </div>
+                <div class="form-group"> 
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+        
+                </div>
+                <div class="form-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.8333 12.5H14.1667V10.8333H15.8333V12.5ZM15.8333 15.8333H14.1667V14.1666H15.8333V15.8333ZM10.8333 5.83329H9.16667V4.16663H10.8333V5.83329ZM10.8333 9.16663H9.16667V7.49996H10.8333V9.16663ZM10.8333 12.5H9.16667V10.8333H10.8333V12.5ZM10.8333 15.8333H9.16667V14.1666H10.8333V15.8333ZM5.83333 9.16663H4.16667V7.49996H5.83333V9.16663ZM5.83333 12.5H4.16667V10.8333H5.83333V12.5ZM5.83333 15.8333H4.16667V14.1666H5.83333V15.8333ZM12.5 9.16663V4.16663L10 1.66663L7.5 4.16663V5.83329H2.5V17.5H17.5V9.16663H12.5Z" fill="#8a8a8a"></path>
+                </svg>
+                    <select name="place" id="placeSelect" class="form-control" required>
+                        <option value=""  disabled selected hidden>Tỉnh thành</option>
+                        <?php foreach ($places as $place): ?>
+                            <option value="<?php echo htmlspecialchars($place); ?>"><?php echo htmlspecialchars($place); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.0002 1.66663C12.7585 1.66663 15.0002 3.88329 15.0002 6.62496C15.0002 10.3416 10.0002 15.8333 10.0002 15.8333C10.0002 15.8333 5.00016 10.3416 5.00016 6.62496C5.00016 3.88329 7.24183 1.66663 10.0002 1.66663ZM10.0002 4.99996C9.55814 4.99996 9.13421 5.17555 8.82165 5.48811C8.50909 5.80067 8.3335 6.2246 8.3335 6.66663C8.3335 7.10865 8.50909 7.53258 8.82165 7.84514C9.13421 8.1577 9.55814 8.33329 10.0002 8.33329C10.4422 8.33329 10.8661 8.1577 11.1787 7.84514C11.4912 7.53258 11.6668 7.10865 11.6668 6.66663C11.6668 6.2246 11.4912 5.80067 11.1787 5.48811C10.8661 5.17555 10.4422 4.99996 10.0002 4.99996ZM16.6668 15.8333C16.6668 17.675 13.6835 19.1666 10.0002 19.1666C6.31683 19.1666 3.3335 17.675 3.3335 15.8333C3.3335 14.7583 4.35016 13.8 5.92516 13.1916L6.4585 13.95C5.5585 14.325 5.00016 14.8416 5.00016 15.4166C5.00016 16.5666 7.24183 17.5 10.0002 17.5C12.7585 17.5 15.0002 16.5666 15.0002 15.4166C15.0002 14.8416 14.4418 14.325 13.5418 13.95L14.0752 13.1916C15.6502 13.8 16.6668 14.7583 16.6668 15.8333Z" fill="#8a8a8a"></path>
+                </svg>
+                    <select name="showroom" id="showroomSelect" class="form-control" required>
+                    <option value="" disabled selected hidden >Showroom nhận xe</option>
+                    
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary">Gửi thông tin</button>
+                </div>
+            </form>
         </div>
-    </div>
-
-
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Đặt cọc </h4>
-                </div>
-
-                <!-- Modal body -->
-                <header class="modal-heading">
-                    <i class="modal-icon fas fa-pen"></i>
-                    Nhập thông tin khách hàng
-                </header>
-                <div class="modal-body">
-                    <div class="modal-container">
-                        <label for="" class="modal-info">
-                            Thông tin chủ xe
-                        </label>
-                        <div class="modal-body">
-                            <form action="#" method="POST">
-                                <div>
-                                    <label>
-                                        Họ và tên
-                                    </label>
-                                    <input type="text" name="name">
-                                </div>
-
-                                <div>
-                                    <label f>
-                                        Số điện thoại
-                                    </label>
-                                    <input type="text" name="phone">
-                                </div>
-                                <div>
-                                    <label>
-                                        Số CMT/CCCD
-                                    </label>
-                                    <input type="text" name="identity">
-                                </div>
-                                <div>
-                                    <label>
-                                        Email
-                                    </label>
-                                    <input type="email" name="email">
-                                </div>
-
-                            </form>
-
-
-
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <footer class="modal-info">
-                                    Showroom
-                                </footer>
-
-                                <div class="modal-grid">
-                                    <div>
-                                        <label>
-                                            Tỉnh thành
-                                        </label>
-                                        <input type="text" name="province">
-                                    </div>
-
-                                    <div>
-                                        <label for="" class="modal-label">
-                                            Showroom nhận xe
-                                        </label>
-                                        <input type="text" name="location">
-                                    </div>
-                                </div>
-
-                                <button id="send-msg">Gửi thông tin</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                </div>
-
-            </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
         </div>
+        
+      </div>
     </div>
+  </div>
+  
 
-
-
-
-
-
-
-
-
-
-
-    <?php include('../client/footer.php') ?>
-
-
+<?php include('../client/footer.php') ?>
 
 </body>
 <script src="../js/slick.js"></script>
+<script>
+document.getElementById('placeSelect').addEventListener('change', function() {
+    const place = this.value;
 
->>>>>>> e6d015700399f50c37851aac9b16a853f79dde7e
+    if (place) {
+        fetch('get_showrooms.php?place=' + encodeURIComponent(place))
+            .then(response => response.json())
+            .then(data => {
+                const showroomSelect = document.getElementById('showroomSelect');
+                showroomSelect.innerHTML = '<option value="" disabled selected hidden>Showroom nhận xe</option>';
+                data.forEach(showroom => {
+                    const option = document.createElement('option');
+                    option.value = showroom;
+                    option.textContent = showroom;
+                    showroomSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching showrooms:', error));
+    }
+});
+</script>
 </html>

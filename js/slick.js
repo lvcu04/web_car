@@ -1,68 +1,66 @@
-document.addEventListener('DOMContentLoaded', function() {
-    function initSlider(sliderContainer) {
-        const slides = sliderContainer.querySelector('.slides');
-        const slide = sliderContainer.querySelectorAll('.slide');
-        const next = sliderContainer.querySelector('.next');
-        const prev = sliderContainer.querySelector('.prev');
-        const brandHeaders = document.querySelectorAll('.change-title-color');
-        const brand1 = document.getElementById('VF3');
-        const brand2 = document.getElementById('VF5');
-        const brand3 = document.getElementById('VF6');
-        const brand4 = document.getElementById('VFe34');
-        const brand5 = document.getElementById('VF7');
-        const brand6 = document.getElementById('VF8');
-        const brand7 = document.getElementById('VF9');
-        
+$(document).ready(function() {
+    function initSlider($sliderContainer) {
+        const $slides = $sliderContainer.find('.slides');
+        const $slide = $sliderContainer.find('.slide');
+        const $next = $sliderContainer.find('.next');
+        const $prev = $sliderContainer.find('.prev');
+        const $brandHeaders = $('.change-title-color');
+        const $brand1 = $('#VF3');
+        const $brand2 = $('#VF5');
+        const $brand3 = $('#VF6');
+        const $brand4 = $('#VFe34');
+        const $brand5 = $('#VF7');
+        const $brand6 = $('#VF8');
+        const $brand7 = $('#VF9');
+
         let currentIndex = 0;
 
-        
-
         function showSlide(index) {
-            if (index >= slide.length) {
+            if (index >= $slide.length) {
                 currentIndex = 0;
             } else if (index < 0) {
-                currentIndex = slide.length - 1;
+                currentIndex = $slide.length - 1;
             } else {
                 currentIndex = index;
             }
-            slides.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+            $slides.css('transform', 'translateX(' + (-currentIndex * 100) + '%)');
 
-            brandHeaders.forEach((header, i) => {
-                header.style.fill = i === currentIndex ?  'blue': '#3C3C3C';
+            $brandHeaders.each(function(i) {
+                $(this).css('fill', i === currentIndex ? 'blue' : '#3C3C3C');
             });
         }
 
-        next.addEventListener('click', function() {
+        $next.on('click', function() {
             showSlide(currentIndex + 1);
         });
 
-        prev.addEventListener('click', function() {
+        $prev.on('click', function() {
             showSlide(currentIndex - 1);
         });
 
-        brand1.addEventListener('click',function(){
+        $brand1.on('click', function() {
             showSlide(0);
-        })
-        brand2.addEventListener('click',function(){
+        });
+        $brand2.on('click', function() {
             showSlide(1);
-        })
-        brand3.addEventListener('click',function(){
+        });
+        $brand3.on('click', function() {
             showSlide(2);
-        })
-        brand4.addEventListener('click',function(){
+        });
+        $brand4.on('click', function() {
             showSlide(3);
-        })
-        brand5.addEventListener('click',function(){
+        });
+        $brand5.on('click', function() {
             showSlide(4);
-        })
-        brand6.addEventListener('click',function(){
+        });
+        $brand6.on('click', function() {
             showSlide(5);
-        })
-        brand7.addEventListener('click',function(){
+        });
+        $brand7.on('click', function() {
             showSlide(6);
-        })
+        });
 
-        setInterval(() => {
+        setInterval(function() {
             showSlide(currentIndex + 1);
         }, 60000);
 
@@ -70,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentIndex);
     }
 
-    const sliders = document.querySelectorAll('.slider');
-    sliders.forEach(initSlider);
+    const $sliders = $('.slider');
+    $sliders.each(function() {
+        initSlider($(this));
+    });
 });

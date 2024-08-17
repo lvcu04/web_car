@@ -20,11 +20,13 @@ $sql_transactions= "SELECT users.*, product.*, transactions.*,
         INNER JOIN users ON transactions.customer_id = users.id 
         INNER JOIN product ON transactions.product_id = product.product_id";
 //sql sản phẩm
-$sql_product = "SELECT * FROM product";
+$sql_product_infor = "SELECT * FROM product";
+// $sql_product_status="SELECT * FROM product";
 
 
 $result_transactions= mysqli_query($data, $sql_transactions);
-$result_product=mysqli_query($data,$sql_product);
+$result_product_infor=mysqli_query($data,$sql_product_infor);
+$result_product_status=mysqli_query($data,$sql_product_status);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,7 +124,47 @@ $result_product=mysqli_query($data,$sql_product);
 
         <div class="tab-content">
             <div id="a" class="container-fluid tab-pane active">
-            
+            <div class="row  py-4 ">
+                    <div class="col">
+                        <table class="table table-bordered custom-border">
+                            <thead>
+                                <tr>
+                                    <th>Mã sản phẩm</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Màu</th>
+                                    <th>Kích thước</th>
+                                    <th>Dung lượng pin</th>
+                                    <th>Loại bánh xe</th>
+                                    <th>Năng lượng tiêu thụ</th>
+                                    <th>Số lượng ghế</th>
+                                    <th>Thời gian sạc nhanh</th>
+                                    <th>Túi khí</th>
+                                    <th>Số lượng sản phẩm</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while ($info_product = $result_product->fetch_assoc()) { ?>
+                                    <tr>
+                                        <td><?php echo $info_product['product_id']; ?></td>
+                                        <td><?php echo $info_product['product_name']; ?></td>
+                                        <td><?php echo $info_product['color']; ?></td>
+                                        <td><?php echo $info_product['dimensions']; ?></td>
+                                        <td><?php echo $info_product['battery_capacity']; ?></td>
+                                        <td><?php echo $info_product['wheel_type']; ?></td>
+                                        <td><?php echo $info_product['fuel_consumption']; ?></td>
+                                        <td><?php echo $info_product['seat_count']; ?></td>
+                                        <td><?php echo $info_product['fast_charge_time']; ?></td>
+                                        <td><?php echo $info_product['airbags']; ?></td>
+                                        <td><?php echo $info_product['product_number']; ?></td>
+                                        <td><?php echo $info_product['status']; ?></td>
+                                    </tr>
+                                <?php } ?>
+                                <tr ><td colspan="11" style="text-align: center;"><?php echo "<button class='btn btn-success'><a href='#' class='text-white'>Thêm loại xe</a></button>"; ?></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
             </div>
             <div id="b" class="container tab-pane fade">
             <div class="row  py-4 ">
@@ -213,7 +255,9 @@ $result_product=mysqli_query($data,$sql_product);
                                         </td>
                                     </tr>
                                 <?php } ?>
-                                <tr ><td colspan="11" style="text-align: center;"><?php echo "<button class='btn btn-success' data-toggle='modal' data-target='#myModal'><a href='#' class='text-white'>Thêm giao dịch</a></button>"; ?></td></tr>
+                                    <tr >
+                                       <td colspan="11" style="text-align: center;"><?php echo "<button class='btn btn-success'  data-toggle='modal' data-target='#myModal1'>Thêm giao dịch</button>"; ?></td>
+                                    </tr>
                             </tbody>
                         </table>
                     </div>
@@ -270,8 +314,62 @@ $result_product=mysqli_query($data,$sql_product);
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
           
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm giao dịch</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="updateForm" action="../admin/insert.php" method="POST">
+            <input type="hidden" id="transaction_id" name="transaction_id">
+            <table class="table table-bordered">
+              <tr>
+                <td><label for="name" class="form-label">Họ và tên</label></td>
+                <td><input type="text" class="form-control" id="name" name="name"></td>
+                <td><label for="phone" class="form-label">Số điện thoại</label></td>
+                <td><input type="text" class="form-control" id="phone" name="phone"></td>
+              </tr>
+               
+               <tr>
+                <td><label for="pob" class="form-label">Nơi sinh</label></td>
+                <td><input type="text" class="form-control" id="pob" name="pob"></td>
+                <td><label for="phone" class="form-label">Tên xe</label></td>
+                <td><input type="text" class="form-control" id="product_name" name="product_name"></td>
+              </tr>
+
+              <tr>
+                <td><label for="phone" class="form-label">Màu</label></td>
+                <td><input type="text" class="form-control" id="color" name="color"></td>
+                <td><label for="phone" class="form-label">Giá</label></td>
+                <td><input type="text" class="form-control" id="price" name="price"></td>
+              </tr>
+
+              <tr>
+                <td><label for="phone" class="form-label">Tiền cọc</label></td>
+                <td><input type="text" class="form-control" id="deposit" name="deposit"></td>
+                <td><label for="phone" class="form-label">Số lượng mua</label></td>
+                <td><input type="text" class="form-control" id="number" name="number"></td>
+              </tr>
+            </table>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary">Thêm</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
         </div>
       </div>
     </div>

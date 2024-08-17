@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 
 $host = "localhost";
 $user = "root";
@@ -26,6 +26,9 @@ if (isset($_SESSION['email'])) {
     header("Location: login.php");
     exit();
 }
+
+
+$cart_count = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
 ?>
 
 
@@ -40,6 +43,24 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include('home_css.php'); ?>
+    <style>
+        .notify {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            left: 10px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 14px;
+            height: 13px;
+            font-size: 10px;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
@@ -58,31 +79,23 @@ if (isset($_SESSION['email'])) {
                 </ul>
             </nav>
             <div class="box-car-head">
-<<<<<<< HEAD
+                
                 <span class="account"><i class="fas fa-user"></i><?php echo htmlspecialchars($name); ?></span>
-=======
-
-                <?php if ($username != "Tài khoản") { ?>
-                <span class="account"><i class="fas fa-user"></i><?php echo htmlspecialchars($username); ?></span>
->>>>>>> e6d015700399f50c37851aac9b16a853f79dde7e
                 <ul class="menu-account">
                     <li class="menu-account-item"><a href="#">Thông tin cá nhân</a></li>
                     <li class="menu-account-item"><a href="logout.php">Đăng xuất</a></li>
                 </ul>
-<<<<<<< HEAD
-                <div class="register-drive"><button><a href="#">Đăng ký lái thử</a></button></div>
-                <div class="main-menu"><i class="fa fa-bars" aria-hidden="true"></i></div>
-=======
-                <?php } else { ?>
-                <a class="account" href="login.php"><i
-                        class="fas fa-user"></i><?php echo htmlspecialchars($username); ?></a>
-                <?php } ?>
-
-
->>>>>>> e6d015700399f50c37851aac9b16a853f79dde7e
+            </div>
+            <div class="notify">
+                <i class="fa fa-car" id="cart_car" aria-hidden="true"></i> 
+                <span class="cart-count"><?php echo $cart_count; ?></span>
             </div>
         </div>
     </header>
 </body>
-
+<script>
+    document.getElementById('cart_car').addEventListener('click',function(){
+        window.location.href = '../client/cart_car.php';
+    });
+</script>
 </html>

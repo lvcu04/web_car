@@ -38,7 +38,9 @@ body {
     width: 150px;
     height: auto;
 }
-
+nav {
+    padding-left: 18%;
+}
 nav ul {
     list-style-type: none;
     margin: 0;
@@ -67,7 +69,7 @@ nav ul li a:hover {
 .box-car-head {
     display: flex;
     align-items: center;
-    padding-right: 35px;
+    padding-left: 15%;
 }
 
 .box-car-head .account {
@@ -82,25 +84,18 @@ nav ul li a:hover {
     position: relative;
     transition: color 0.3s ease;
 }
-
-.box-car-head i {
-    margin-right: 5px;
-    font-size: 14px;
+.box-car-head  i{
+    font-size: 12px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+}
+.notify i {
+   padding-right: 45px;
+    font-size: 17px;
     transition: color 0.3s ease;
 }
 
-.box-car-head .account:hover {
-    color: #1464F4;
-}
 
-.box-car-head button {
-    background-color: #1464F4;
-    height: 35px;
-    width: 160px;
-    border-radius: 3px;
-    border: 1px solid #1464F4;
-    transition: background-color 0.5s ease, border-color 0.5s ease;
-}
 
 .box-car-head button:hover {
     background-color: #f8f9fa;
@@ -479,24 +474,23 @@ nav ul li a:hover {
     position: absolute;
     list-style: none;
     top: 100%;
-    left: 74%;
+    left: 71%;
     width: 250px;
     background-color: rgb(248, 246, 246);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none;
     z-index: 10;
-    /* Đảm bảo menu xuất hiện trên cùng */
+   
 }
 
 .menu-account::before {
-
     content: "";
     border-width: 12px 57px;
     border-style: solid;
     border-color: rgb(248, 246, 246);
     position: absolute;
-    right: 3px;
-    top: -20px;
+    right: 0px;
+    top: -23px;
 
 }
 
@@ -527,4 +521,87 @@ nav ul li a:hover {
 .menu-account .menu-account-item:hover a {
     color: #1464f4;
 }
+/* Cart_car */
+.container{
+    width: 100%;
+    height: 400px;
 
+}
+.container_cart{
+    padding: 0px 60px;
+    padding-top: 35px;
+}
+.title_cart{
+    position: relative;
+}
+.title_cart::after {
+    content: "";
+    position: absolute;
+    border-left: solid #568df3 3px;
+    bottom:12px;
+    right: 100%;
+    height: 12px; 
+}
+.title_item_cart{
+    margin-bottom: 7px;
+    margin-left: 8px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+.brand i{
+    margin-right: 5px;
+    color: #3C3C3C;
+}
+.brand span{
+    color: #3C3C3C;
+}
+.content_car{
+    display: flex;
+    padding-top: 50px;
+    justify-content: space-between;
+}
+.content_car_img img{
+    width: 150px;
+    height: 100px;
+}
+.content_car_name{
+  
+    display: flex;
+    align-items: center;
+}
+.content_car_name span{
+    font-weight: 700;
+}
+.content_car_color{
+
+    display: flex;
+    align-items: center;
+}
+.content_car_color span{
+    color: #3C3C3C;
+}
+.content_car_price{
+    display: flex;
+    align-items: center;
+}
+.content_car_number{
+    display: flex;
+    align-items: center;
+     padding-left: 30px;
+}
+
+.content_car_deposit{
+    display: flex;
+    align-items: center;
+}
+.group_infor{
+    margin-left: auto;
+    
+}
+.group_infor span{
+    padding-left: 140px;
+}
